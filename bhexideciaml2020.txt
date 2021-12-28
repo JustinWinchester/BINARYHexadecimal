@@ -1,0 +1,142 @@
+#include<iostream>
+#include<cstdlib>
+#include<cmath>
+#define SIZE 8
+using namespace std;
+
+//Function declarations/prototypes!
+
+void generate_binary(int[]);
+void generate_hexidecimal(int[], int[]);
+
+void print_hexidecimal(int []);
+void print_binary( int[]);
+
+
+
+//Main function to execute program:
+
+int main(){
+        //Declare variable and variable holders:
+
+        int binary[8]={0,0,0,0,0,0,0,0};
+        int hexidecimal[2]={0,0};
+        int decimal = 0;
+
+        //Print each initial value of zero to screen
+
+        cout<< decimal;
+
+
+        print_binary(binary);
+
+        print_hexidecimal(hexidecimal);
+        cout<<"\n";
+
+        //Loop to generate numbers from 0-255
+
+        while(++decimal < 256)
+        {
+                //Print each value and use functions to determine binary and hexidecimal #'s for each decimal #;
+
+                cout<<decimal;
+                generate_binary(binary);
+                print_binary(binary);
+
+                generate_hexidecimal(binary, hexidecimal);
+                print_hexidecimal(hexidecimal);
+                hexidecimal[0]=hexidecimal[1]=0;
+      cout<<"\n";
+        }
+
+
+        cout<<"   "<< cout<<"/n";
+
+
+
+//End of Program
+
+return 0;
+}
+
+
+
+void generate_binary(int binary[])
+{
+        int i;
+        for(i = 7; i > 0; i--){
+        if(binary[i]==0){
+        binary[i]=1;
+
+        break;
+        }
+        else{
+        binary[i]=0;
+        }
+}
+}
+
+void generate_hexidecimal(int binary[], int hexidecimal[])
+{
+        int i;
+        for(i = 7; i > 0; i--)
+        {
+                if(i>=4)
+                {
+                if(binary[i]==1){
+                hexidecimal[1]+= pow(2,7-i);
+                }
+                }
+                else{
+
+                if(i >=3)
+                {
+                if(binary[i]==1){
+                hexidecimal[0]+= pow(2,3-i);
+                }
+}
+}
+}
+
+}
+
+void print_hexidecimal(int hexidecimal[])
+{       //Print Function if the decimal # is past 9 and less the 16 we output it's hexidecimal letter representation;
+        int i;
+        for(i = 0; i < 2; i++){
+                if(hexidecimal[i]==10){
+                cout<<"A"<<endl;
+        }
+        else if(hexidecimal[i]==11){
+                cout<<"B"<<endl;
+        }
+         else if(hexidecimal[i]==12){
+                cout<<"C"<<endl;
+        }
+         else if(hexidecimal[i]==13){
+}
+         else if(hexidecimal[i]==14){
+                cout<<"E"<<endl;
+        }
+         else if(hexidecimal[i]==15){
+                cout<<"F"<<endl;
+        }else{
+        cout<<hexidecimal[i];
+        }
+        }
+        cout<<"/n";
+        }
+
+void print_binary( int binary[])
+{
+        int i;
+        for(i = 0; i < 7; i++)
+        {
+cout<< binary[i];
+        }
+        cout<<"\n";
+}
+
+
+
+
